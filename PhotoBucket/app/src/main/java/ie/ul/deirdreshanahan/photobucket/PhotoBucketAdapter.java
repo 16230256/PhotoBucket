@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -17,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +60,16 @@ public class PhotoBucketAdapter extends RecyclerView.Adapter<PhotoBucketAdapter.
         String movie = (String)ds.get(Constants.KEY_MOVIE);
 
         photobucketViewHolder.mQuoteTextView.setText(quote);
-        photobucketViewHolder.mMovieTextView.setText(movie);
+
+        //photobucketViewHolder.mMovieTextView.setText(movie);
+
+
+        //Ion.with() for preview
+
+        //Ion.with(photobucketViewHolder.mMovieImageView).load(movie);
+
+
+
     }
 
     @Override
@@ -68,12 +79,12 @@ public class PhotoBucketAdapter extends RecyclerView.Adapter<PhotoBucketAdapter.
 
     class PhotoBucketViewHolder extends RecyclerView.ViewHolder{
         private TextView mQuoteTextView;
-        private TextView mMovieTextView;
+        private ImageView mMovieImageView;
 
         public PhotoBucketViewHolder(@NonNull View itemView) {
             super(itemView);
             mQuoteTextView = itemView.findViewById(R.id.itemview_quote);
-            mMovieTextView = itemView.findViewById(R.id.itemview_movie);
+            mMovieImageView = itemView.findViewById(R.id.itemview_movie);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
